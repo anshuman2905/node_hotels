@@ -4,6 +4,8 @@ const port = 3000
 const db=require('./db')
 const Person=require('./models/Person')
 const MenuItem=require('./models/MenuItem')
+require('dotenv').config();
+const PORT=process.env.PORT||3000;
 
 
 const bodyParser=require('body-parser')
@@ -23,6 +25,6 @@ const MenuItemRoutes=require('./routes/menuRoutes')
 app.use('/menu',MenuItemRoutes)
 
 
-app.listen(3000,()=>{
+app.listen(PORT,()=>{
     console.log(`Listing on 3000`);
 });
