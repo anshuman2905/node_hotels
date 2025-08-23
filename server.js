@@ -7,14 +7,21 @@ const MenuItem=require('./models/MenuItem')
 require('dotenv').config();
 const PORT=process.env.PORT||3000;
 
+//Middle Ware Function
+
+const logRequest=(req,res,next)=>{
+  console.log(`[${new Date().toLocaleString()}] Request Made To : ${req.originalUrl}`);
+  next();
+  
+}
+app.use(logRequest);
 
 const bodyParser=require('body-parser')
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
+app.get('/',(req, res) => {
   res.send('Welcome To Anshuman The Dhaba, Ky chahiye Bhai?')
 })
-
 
 
 
